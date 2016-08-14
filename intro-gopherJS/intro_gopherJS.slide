@@ -51,3 +51,13 @@ https://github.com/felipeweb
 .code hello.html
 - Compilando o arquivo Go para JavaScript
 .code build_hello.sh
+
+* Manipulando o DOM com GopherJS
+- DOM Go
+.code dom.go
+
+* Manipulando o DOM com GopherJS
+- HTML
+.code dom.html
+- Compilando o arquivo Go para JavaScript
+.code build_dom.sh
