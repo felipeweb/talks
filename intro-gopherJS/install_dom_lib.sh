@@ -1,0 +1,1 @@
+go get -u honnef.co/go/js/dom

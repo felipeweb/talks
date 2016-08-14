@@ -1,0 +1,1 @@
+gopherjs build dom_with_lib.go -m -o dom_with_lib.js

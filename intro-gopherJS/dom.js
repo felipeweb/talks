@@ -2323,12 +2323,15 @@ $packages["main"] = (function() {
 	main = function() {
 		var $ptr;
 		$global.window.onload = $externalize((function() {
-			var $ptr, body, img;
-			body = $global.document.body;
-			body.style.backgroundColor = $externalize("red", $String);
-			img = $global.document.createElement($externalize("img", $String));
-			img.src = $externalize("gopher.png", $String);
-			body.appendChild(img);
+			var $ptr;
+			$go((function() {
+				var $ptr, body, img;
+				body = $global.document.body;
+				body.style[$externalize("background-color", $String)] = $externalize("red", $String);
+				img = $global.document.createElement($externalize("img", $String));
+				img.src = $externalize("gopher.png", $String);
+				body.appendChild(img);
+			}), []);
 		}), funcType);
 	};
 	$init = function() {
