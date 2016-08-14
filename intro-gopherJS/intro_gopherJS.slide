@@ -1,0 +1,53 @@
+Escrevendo Go no front-end
+com GopherJS
+
+
+Felipe Paes de Oliveira
+felipeweb.programador@gmail.com
+http://www.felipeweb.net.br
+https://github.com/felipeweb
+@_felipeweb
+
+* Quais plataformas suportam Go?
+- Linux (Go nativo), Google
+- OSX (Go nativo), Google
+- Windows (Go nativo), Google
+- Raspberry Pi (Go nativo), Google
+- Android (Go mobile), Google
+- IOS (Go mobile), Google
+- Browser (Gopher JS), Comunidade, com participação de commiters da linguagem Go
+
+* O que GopherJS suporta?
+- *100%* da Go standard library
+- Grande parte da implementação segue a especificação do Go
+- Defer
+- Panic
+- Recover
+- Goroutines
+
+* Por que usar GopherJS?
+- Oportunidade de escrever código Go para rodar em todos os navegadores
+- Familiaridade com ferramentas (gofmt, godoc, ...)
+- Familiaridade com tipos (int, bytes, ...)
+- Checagem de tipos
+- Familiaridade com concorrência, blocking receiving ao invés de callbacks
+- Familiaridade com erros de compilação (refatoração)
+- Uso de bibliotecas de terceiros (Go e JavaScript)
+
+* Por que usar GopherJS?
+.image grafico.jpg
+
+* Adicionando GopherJS ao $GOPATH
+.code install.sh
+
+* Hello GopherJS
+- Hello com JavaScript
+.code hellojs.js
+- Hello Go
+.code hellojs.go
+
+* Hello GopherJS
+- HTML
+.code hello.html
+- Compilando o arquivo Go para JavaScript
+.code build_hello.sh
