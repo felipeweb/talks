@@ -73,3 +73,19 @@ https://github.com/felipeweb
 .code dom_with_lib.html
 - Compilando o arquivo Go para JavaScript
 .code build_dom_with_lib.sh
+
+* Mas hoje quase tudo usa Jquery e agora?
+
+* Tem uma lib que encapsula o Jquery para GopherJS?
+
+* Jquery GopherJS
+- Adicionando Jquery ao $GOPATH
+.code install_jquery.sh
+- DOM Go com Jquery
+.code dom_with_jquery.go
+
+* Jquery GopherJS
+- HTML
+.code dom_with_jquery.html
+- Compilando o arquivo Go para JavaScript
+.code build_dom_with_jquery.sh

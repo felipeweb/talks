@@ -1,0 +1,1 @@
+gopherjs build dom_with_jquery.go -m -o dom_with_jquery.js
