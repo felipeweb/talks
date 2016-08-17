@@ -89,3 +89,9 @@ https://github.com/felipeweb
 .code dom_with_jquery.html
 - Compilando o arquivo Go para JavaScript
 .code build_dom_with_jquery.sh
+
+* Como o gopherJS lida com as peculiaridades do Go?
+
+* Defer GopherJS
+.code defer.go
+O *defer* é resovido em tempo de compilação do código para JavaScript
