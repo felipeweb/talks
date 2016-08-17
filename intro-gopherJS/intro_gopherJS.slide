@@ -73,13 +73,13 @@ https://github.com/felipeweb
 - Compilando o arquivo Go para JavaScript
 .code build_dom.sh
 
-* Manipulando o DOM com GopherJS .link DOM lib)
+* Manipulando o DOM com GopherJS  (DOM lib)
 - Instalando a biblioteca de DOM
 .code install_dom_lib.sh
 - DOM com a lib Go
 .code dom_with_lib.go
 
-* Manipulando o DOM com GopherJS .link DOM lib)
+* Manipulando o DOM com GopherJS (DOM lib)
 - HTML
 .code dom_with_lib.html
 - Compilando o arquivo Go para JavaScript
