@@ -102,3 +102,9 @@ O *defer* é resovido em tempo de compilação do código para JavaScript
 * Panic e Recover
 - Panic é convertido para o tipo _Error_ do JavaScript
 - Recover é controlado por meio de _try_ e _catch_
+
+* Goroutines e Chanels
+.code snake.go /start to move snake/,/end to move snake OMIT/
+.link https://github.com/felipeweb/talks/blob/master/intro-gopherJS/snake.go
+O GopherJS fica manipulando a pilha de instruções a serem executadas
+

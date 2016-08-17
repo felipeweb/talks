@@ -151,6 +151,7 @@ func startGame() {
 			}
 		}
 	}()
+	// end to move snake OMIT
 }
 
 
