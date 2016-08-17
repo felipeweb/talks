@@ -95,3 +95,10 @@ https://github.com/felipeweb
 * Defer GopherJS
 .code defer.go
 O *defer* é resovido em tempo de compilação do código para JavaScript
+
+* Panic e Recover
+.code recover.go /^func Parse/,/^}/
+
+* Panic e Recover
+- Panic é convertido para o tipo _Error_ do JavaScript
+- Recover é controlado por meio de _try_ e _catch_
