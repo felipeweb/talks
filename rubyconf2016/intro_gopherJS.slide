@@ -64,7 +64,7 @@ https://github.com/felipeweb
 .code hello.html
 - Compilando o arquivo Go para JavaScript
 .code build_hello.sh
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/hello.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/hello.html
 
 * Manipulando o DOM com GopherJS
 - DOM Go
@@ -75,7 +75,7 @@ https://github.com/felipeweb
 .code dom.html
 - Compilando o arquivo Go para JavaScript
 .code build_dom.sh
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/dom.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/dom.html
 
 * Manipulando o DOM com GopherJS  (DOM lib)
 - Instalando a biblioteca de DOM
@@ -88,7 +88,7 @@ https://github.com/felipeweb
 .code dom_with_lib.html
 - Compilando o arquivo Go para JavaScript
 .code build_dom_with_lib.sh
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/dom_with_lib.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/dom_with_lib.html
 
 * Mas hoje quase tudo usa Jquery e agora?
 
@@ -105,20 +105,20 @@ https://github.com/felipeweb
 .code dom_with_jquery.html
 - Compilando o arquivo Go para JavaScript
 .code build_dom_with_jquery.sh
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/dom_with_jquery.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/dom_with_jquery.html
 
 * Ajax GopherJS
 .code ajax.go
 
 * Ajax GopherJS
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/ajax.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/ajax.html
 
 * Como o gopherJS lida com as peculiaridades do Go?
 
 * Defer GopherJS
 .code defer.go
 O *defer* é resovido em tempo de compilação do código para JavaScript
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/defer.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/defer.html
 
 * Panic e Recover
 .code recover.go /^func Parse/,/^}/
@@ -126,13 +126,13 @@ O *defer* é resovido em tempo de compilação do código para JavaScript
 * Panic e Recover
 - Panic é convertido para o tipo _Error_ do JavaScript
 - Recover é controlado por meio de _try_ e _catch_
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/recover.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/recover.html
 
 * Goroutines e Chanels
 .code snake.go /start to move snake/,/end to move snake OMIT/
-.link https://github.com/felipeweb/talks/blob/master/intro_gopherjs_rubyconf2016/snake.go
+.link https://github.com/felipeweb/talks/blob/master/rubyconf2016/snake.go
 O GopherJS fica manipulando a pilha de instruções a serem executadas
-.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/snake.html
+.link file:///Users/felipeweb/Code/go/src/github.com/felipeweb/talks/rubyconf2016/snake.html
 
 * Além da lib Jquery e DOM existe outras :)
 - AngularJS:

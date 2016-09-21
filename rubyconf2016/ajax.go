@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	res, err := http.Get("https://cursos.alura.com.br/api/cursos")
+	res, err := http.Get("http://api.postmon.com.br/v1/cep/01313020")
 	if err != nil {
 		panic(err)
 	}
