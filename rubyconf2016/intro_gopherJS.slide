@@ -1,0 +1,200 @@
+Escrevendo Go no front-end
+com GopherJS
+24 Sep 2016
+
+Felipe Paes de Oliveira
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+https://github.com/felipeweb
+@_felipeweb
+
+* Sobre mim
+- Atualmente trabalho como freelancer
+- Lider de desenvolvimento do Mamute
+.link https://github.com/caelum/mamute
+- Autor da lib Gopher Utils
+.link https://github.com/felipeweb/gopher-utils
+- Autor da lib Osin Mysql
+.link https://github.com/felipeweb/osin-mysql
+- Autor da lib HTML Render
+.link https://github.com/felipeweb/htmlrender
+- Contribuidor do framework Go Macaron
+.link https://go-macaron.com
+
+* Quais plataformas suportam Go?
+- Linux (Go nativo), Google
+- OSX  (Go nativo), Google
+- Windows (Go nativo), Google
+- Raspberry Pi (Go nativo), Google
+- Android  (Go mobile), Google
+- IOS (Go mobile), Google
+- Browser (Gopher JS), Comunidade, com participação de commiters da linguagem Go
+
+* O que GopherJS suporta?
+- *100%* da Go standard library
+- Grande parte da implementação segue a especificação do Go
+- Defer
+- Panic
+- Recover
+- Goroutines
+
+* Por que usar GopherJS?
+- Oportunidade de escrever código Go para rodar em todos os navegadores
+- Familiaridade com ferramentas  (gofmt, godoc, ...)
+- Familiaridade com tipos (int, bytes, ...)
+- Checagem de tipos
+- Familiaridade com concorrência, blocking receiving ao invés de callbacks
+- Familiaridade com erros de compilação (refatoração)
+- Uso de bibliotecas de terceiros (Go e JavaScript)
+
+* Por que usar GopherJS?
+.image grafico.jpg
+
+* Adicionando GopherJS ao $GOPATH
+.code install.sh
+
+* Hello GopherJS
+- Hello com JavaScript
+.code hellojs.js
+- Hello Go
+.code hellojs.go
+
+* Hello GopherJS
+- HTML
+.code hello.html
+- Compilando o arquivo Go para JavaScript
+.code build_hello.sh
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/hello.html
+
+* Manipulando o DOM com GopherJS
+- DOM Go
+.code dom.go
+
+* Manipulando o DOM com GopherJS
+- HTML
+.code dom.html
+- Compilando o arquivo Go para JavaScript
+.code build_dom.sh
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/dom.html
+
+* Manipulando o DOM com GopherJS  (DOM lib)
+- Instalando a biblioteca de DOM
+.code install_dom_lib.sh
+- DOM com a lib Go
+.code dom_with_lib.go
+
+* Manipulando o DOM com GopherJS (DOM lib)
+- HTML
+.code dom_with_lib.html
+- Compilando o arquivo Go para JavaScript
+.code build_dom_with_lib.sh
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/dom_with_lib.html
+
+* Mas hoje quase tudo usa Jquery e agora?
+
+* Tem uma lib que encapsula o Jquery para GopherJS?
+
+* Jquery GopherJS
+- Adicionando Jquery ao $GOPATH
+.code install_jquery.sh
+- DOM Go com Jquery
+.code dom_with_jquery.go
+
+* Jquery GopherJS
+- HTML
+.code dom_with_jquery.html
+- Compilando o arquivo Go para JavaScript
+.code build_dom_with_jquery.sh
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/dom_with_jquery.html
+
+* Ajax GopherJS
+.code ajax.go
+
+* Ajax GopherJS
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/ajax.html
+
+* Como o gopherJS lida com as peculiaridades do Go?
+
+* Defer GopherJS
+.code defer.go
+O *defer* é resovido em tempo de compilação do código para JavaScript
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/defer.html
+
+* Panic e Recover
+.code recover.go /^func Parse/,/^}/
+
+* Panic e Recover
+- Panic é convertido para o tipo _Error_ do JavaScript
+- Recover é controlado por meio de _try_ e _catch_
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/recover.html
+
+* Goroutines e Chanels
+.code snake.go /start to move snake/,/end to move snake OMIT/
+.link https://github.com/felipeweb/talks/blob/master/intro_gopherjs_rubyconf2016/snake.go
+O GopherJS fica manipulando a pilha de instruções a serem executadas
+.link file:///Users/felipeweb/projetos/go/src/github.com/felipeweb/talks/intro_gopherjs_rubyconf2016/snake.html
+
+* Além da lib Jquery e DOM existe outras :)
+- AngularJS:
+.link https://github.com/neelance/go-angularjs
+- Canvas:
+.link https://github.com/emersion/go-js-canvas
+- Chrome API
+.link https://github.com/fabioberger/chrome
+- D3:
+.link https://github.com/iansmith/d3
+- DOM:
+.link http://honnef.co/go/js/dom
+
+* Além da lib Jquery e DOM existe outras :)
+- EventSource
+.link https://github.com/gopherjs/eventsource
+- JQuery:
+.link https://github.com/gopherjs/jquery
+- JS Builtins:
+.link https://github.com/gopherjs/jsbuiltin
+- JS console:
+.link http://honnef.co/go/js/console
+- Polymer:
+.link https://code.palmstonegames.com/polymer
+
+* Além da lib Jquery e DOM existe outras :)
+- VueJS:
+.link https://github.com/oskca/gopherjs-vue
+- localStorage:
+.link https://github.com/go-humble/locstor
+- PouchDB:
+.link https://github.com/flimzy/go-pouchdb
+- QUnit:
+.link https://github.com/rusco/qunit
+- SQL.js:
+.link https://github.com/flimzy/go-sql.js
+
+* Além da lib Jquery e DOM existe outras :)
+- WebGL:
+.link https://github.com/gopherjs/webgl
+- WebSocket:
+.link https://github.com/gopherjs/websocket
+- XHR:
+.link http://honnef.co/go/js/xhr
+- Mithril:
+.link https://github.com/danverbraganza/go-mithril
+- Ace:
+.link https://maunium.net/go/gopher-ace
+
+* Vantagens?
+
+* Desvantagens?
+
+* Qual é o cenério ideal para se usar GopherJS?
+- Angular JS
+- React
+- Vecty (framework react like criado pela comunidade GopherJS)
+
+* Sobre o Vecty
+- Código
+.link https://github.com/gopherjs/vecty
+- Exemple
+.link https://github.com/gopherjs/vecty/tree/master/examples/todomvc
+- Server
+.link http://localhost:8080/github.com/gopherjs/vecty/examples/todomvc/

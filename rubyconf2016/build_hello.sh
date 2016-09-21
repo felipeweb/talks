@@ -1,0 +1,1 @@
+gopherjs build -o hellojswithgo.js
