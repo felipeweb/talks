@@ -202,5 +202,5 @@ O GopherJS fica manipulando a pilha de instruções a serem executadas
 .link http://localhost:8080/github.com/gopherjs/vecty/examples/todomvc/
 
 * Gophercon Brasil 2016
-.image https://2016.gopherconbr.org/images/floripa/gophercon-floripa-v4.png
+.image gophercon.png
 .link https://2016.gopherconbr.org
