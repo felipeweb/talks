@@ -50,7 +50,9 @@ https://github.com/felipeweb
 * Por que usar GopherJS?
 .image grafico.jpg
 
-* Adicionando GopherJS ao $GOPATH
+* Dependencias
+- Go
+- NodeJS
 .code install.sh
 
 * Hello GopherJS
@@ -198,3 +200,7 @@ O GopherJS fica manipulando a pilha de instruções a serem executadas
 .link https://github.com/gopherjs/vecty/tree/master/examples/todomvc
 - Server
 .link http://localhost:8080/github.com/gopherjs/vecty/examples/todomvc/
+
+* Gophercon Brasil 2016
+.image https://2016.gopherconbr.org/images/floripa/gophercon-floripa-v4.png
+.link https://2016.gopherconbr.org
