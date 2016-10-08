@@ -1,0 +1,123 @@
+Criando apps robustas com Macaron
+08 Oct 2016
+
+Felipe Paes de Oliveira
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+https://github.com/felipeweb
+@_felipeweb
+
+Jeff Prestes
+@jeffprestes
+
+* Sobre mim (@_felipeweb)
+- Atualmente trabalho como freelancer
+- Lider de desenvolvimento do Mamute
+.link https://github.com/caelum/mamute Mamute
+- Autor da lib Gopher Utils
+.link https://github.com/felipeweb/gopher-utils Gopher Utils
+- Autor da lib Osin Mysql Osin Mysql
+.link https://github.com/felipeweb/osin-mysql Osin Mysql
+- Autor da lib HTML Render
+.link https://github.com/felipeweb/htmlrender HTML Render
+- Contribuidor do framework Go Macaron
+.link https://go-macaron.com Macaron
+
+* Por que usar um framework?
+
+* Qual era a nossa necessidade?
+- Renderizar templates Jade
+- I18n
+- JWT
+- Oauth 2
+- Configs baseadas em arquivo
+- Flash messages
+- DB
+
+* Qual framework escolher?
+.link https://echo.labstack.com Echo
+.link https://go-macaron.com Macaron
+
+* Macaron!!!
+
+* Começando com o Macaron
+.code getting_started.go
+
+* Renderizando Jade
+.code login.jade
+
+* Redenrizando jade
+.code jade.go
+
+* I18n
+.code i18n.go
+
+* I18n
+.code pt_BR.ini
+
+* I18n
+.code en_US.ini
+
+* Separado funcionou!!! Vamos tentar juntar Jade + I18n?
+
+* Jade + i18n
+.code middleware.go
+
+* Jade + i18n
+.image erro_jade.png
+
+* Como assim Tr não é uma função?
+
+* Jade + i18n
+- Para que o Tr seja considerado uma função disponivel na view precisamos passar no momento da configuração do middleware
+.code func_conf.go
+
+* Jade precisa do Context e agora?
+
+* Solução!!!
+.code context.go
+
+* Suporte a arquivo de configração nativamente
+.code cfg.go
+
+* Cache
+- MySQL
+- Postgres
+- Redis
+.code cache.go
+
+* Login social
+- Facebook
+- Google
+- Github
+- Linkedin
+- Twitter
+
+* Login social
+.code social.go
+
+* Existem varios middlewares disponiveis além desses :)
+.link https://github.com/go-macaron/binding Binding
+.link https://github.com/go-macaron/toolbox Toolbox
+.link https://github.com/go-macaron/sockets Web sockets
+.link https://github.com/go-macaron/csrf CSRF
+
+* Existem varios middlewares disponiveis além desses :)
+.link https://github.com/go-macaron/gzip GZIP
+.link https://github.com/go-macaron/bindata Bindata
+.link https://github.com/go-macaron/auth Basic auth
+.link https://github.com/go-macaron/switcher Switcher
+
+* Existem varios middlewares disponiveis além desses :)
+.link https://github.com/go-macaron/method Method
+.link https://github.com/go-macaron/pongo2 Pongo 2
+
+* Mas e JWT Oauth server e DB?
+- DB
+.link https://github.com/jmoiron/sqlx sqlx
+
+- Oauth Server
+Parte de crypto e cipher da stdlib
+
+- JWT
+.link https://github.com/dgrijalva/jwt-go jwt-go
