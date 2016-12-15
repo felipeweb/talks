@@ -1,0 +1,41 @@
+func Update(database, schema, table, where string, whereValues []interface{}, body api.Request) (jsonData []byte, err error) {
+	var result sql.Result
+	var rowsAffected int64
+	fields := []string{}
+	values := make([]interface{}, 0)
+	pid := len(whereValues) + 1 // placeholder id
+	for key, value := range body.Data {
+		fields = append(fields, fmt.Sprintf("%s=$%d", key, pid))
+		values = append(values, value)
+		pid++
+	}
+	setSyntax := strings.Join(fields, ", ")
+	sql := fmt.Sprintf("UPDATE %s.%s.%s SET %s", database, schema, table, setSyntax)
+	if where != "" {
+		sql = fmt.Sprint(
+			sql,
+			" WHERE ",
+			where)
+		values = append(values, whereValues...)
+	}
+	db := Conn()
+	stmt, err := db.Prepare(sql)
+	if err != nil {
+		return
+	}
+	valuesAux := make([]interface{}, 0, len(values))
+	for i := 0; i < len(values); i++ {
+		valuesAux = append(valuesAux, values[i])
+	}
+	result, err = stmt.Exec(valuesAux...)
+	if err != nil {
+		return
+	}
+	rowsAffected, err = result.RowsAffected()
+	if err != nil {
+		return
+	}
+	data := make(map[string]interface{})
+	data["rows_affected"] = rowsAffected
+	jsonData, err = json.Marshal(data)
+	return

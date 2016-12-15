@@ -1,0 +1,171 @@
+pREST
+A RESTful API from any PostgreSQL database
+15 Dec 2016
+Tags: PostgreSQL, API, REST
+
+Felipe Paes de Oliveira
+Go Developer at Nuveo
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+@_felipeweb
+
+* Sobre mim?
+
+- Estudo Go a 2 anos
+- Trabalho com Go desde Setembro de 2016
+- Antes trabalhava com Java na Caelum
+- Desde Novembro de 2016 na Nuveo
+.image https://files.slack.com/files-pri/T050WUZDJ-F3BER1486/pasted_image_at_2016_12_05_04_20_pm.png 200 400
+
+* Como surgiu o pREST?
+
+- Nuveo v2
+- Remodelando para uma estrutura menos rigida
+- Nuveo v1 em Go e MongoDB
+- Nuveo v2 Go e PostgreSQL com suporte a JSONB
+- Reescrever todas as queries de todos os sistemas
+- postgREST (https://github.com/begriffs/postgrest, Haskell), dificil de manter em produção
+
+* pREST born (22 de Novembro de 2016)
+
+* Disafios de implementação
+
+* SELECT (all databases)
+
+- GET /databases
+.image https://files.slack.com/files-pri/T050WUZDJ-F3EBRDEP5/pasted_image_at_2016_12_13_10_03_pm.png
+
+* SELECT (all schemas)
+
+- GET /schemas
+.image https://files.slack.com/files-pri/T050WUZDJ-F3EBV340K/pasted_image_at_2016_12_13_10_14_pm.png
+
+* SELECT (all tables)
+
+- GET /tables
+.image https://files.slack.com/files-pri/T050WUZDJ-F3EGGT43F/pasted_image_at_2016_12_13_10_23_pm.png _ 400
+
+* SELECT (all tables based schema)
+
+- GET /{DATABASE}/{SCHEMA}
+.image https://files.slack.com/files-pri/T050WUZDJ-F3FHUFBQE/pasted_image_at_2016_12_14_06_41_pm.png
+
+* Como saber todas essas queries?
+
+- Todas elas disponiveis no client do PostgreSQL
+psql -E
+
+* Operação em uma tabela
+
+* SELECT (rows)
+
+- GET /{DATABASE}/{SCHEMA}/{TABLE}
+
+SELECT * FROM {DATABASE}.{SCHEMA}.{TABLE}
+
+* SELECT - Problemas
+
+- Tabelas com estruturas difirentes
+- Montar JSON para essas estruturas
+
+* Solução - Mapas (map[string]interface{})
+
+.code query.txt
+
+* Filtros (WHERE) - Premissas
+
+- Receber filtro por query params
+- Dar suporte a filtros por campos do tipo JSONB
+
+* Filtros (WHERE) - Problemas
+
+- Sitaxe diferente entre campos comuns e JSONB = e ->>  respectivamente
+- O PostgreSQL usa $1, $2, $3... e não ?
+
+* Solução
+
+- Sintaxes difrentes
+?FIELD=VALUE (padrão)
+?FIELD->>JSONFIELD:jsonb=VALUE (jsonb)
+
+- 2 []string{}, para as chaves e outro para os valores
+
+* Código
+
+.code where.txt
+
+* Filtros - (Paginação)
+
+.code page.txt
+
+* DELETE (rows)
+
+- DELETE /{DATABASE}/{SCHEMA}/{TABLE}
+
+DELETE FROM {DATABASE}.{SCHEMA}.{TABLE}
+
+- Mesmo comportamento do SELECT para os filtros
+
+* Código
+
+.code delete.txt
+
+* INSERT (rows)
+
+- POST /{DATABASE}/{SCHEMA}/{TABLE}
+
+INSERT INTO {DATABASE}.{SCHEMA}.{TABLE}
+
+* INSERT - Problemas
+
+- Definir estrura do do json a receber
+
+* Solução
+
+.code struct.txt
+
+* Código
+
+.code insert.txt
+
+* UPDATE (rows)
+
+- PUT ou PATCH /{DATABASE}/{SCHEMA}/{TABLE}
+
+UPDATE {DATABASE}.{SCHEMA}.{TABLE} SET
+
+* UPDATE - Problemas
+
+- Os mesmos enfrentados nos SECLECTS e INSERTS
+- Já estavam resolvidos :)
+
+* Código
+
+.code update.txt
+
+* Testes
+
+* Testando funções simples
+
+.code stest.txt
+
+* Como testar funções que precisam de info das rotas?
+
+* httptest.Server
+
+* Testando funções complexas
+
+.code ctest.txt
+
+* O que o pREST não tem? (vai ter)
+
+- OR
+- JOIN
+- Configuração por arquivo TOML
+- RPC
+
+* pREST
+
+- É Open Source
+- Contribuições são bem vindas!!!
+.link https://github.com/nuveo/prest https://github.com/nuveo/prest

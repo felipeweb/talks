@@ -1,0 +1,10 @@
+type Request struct {
+	Data map[string]string `json:"data"`
+}
+
+{
+    "data": {
+        "FIELD1": "string value",
+        "FIELD2": 1234567890
+    }
+}

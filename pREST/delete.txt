@@ -1,0 +1,24 @@
+func Delete(database, schema, table, where string, whereValues []interface{}) (jsonData []byte, err error) {
+	var result sql.Result
+	var rowsAffected int64
+	sql := fmt.Sprintf("DELETE FROM %s.%s.%s", database, schema, table)
+	if where != "" {
+		sql = fmt.Sprint(
+			sql,
+			" WHERE ",
+			where)
+	}
+	db := Conn()
+	result, err = db.Exec(sql, whereValues...)
+	if err != nil {
+		return
+	}
+	rowsAffected, err = result.RowsAffected()
+	if err != nil {
+		return
+	}
+	data := make(map[string]interface{})
+	data["rows_affected"] = rowsAffected
+	jsonData, err = json.Marshal(data)
+	return
+}

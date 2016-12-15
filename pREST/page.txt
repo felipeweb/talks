@@ -1,0 +1,21 @@
+func PaginateIfPossible(r *http.Request) (paginatedQuery string, err error) {
+	u, _ := url.Parse(r.URL.String())
+	values := u.Query()
+	if _, ok := values[pageNumberKey]; !ok {
+		paginatedQuery = ""
+		return
+	}
+	pageNumber, err := strconv.Atoi(values[pageNumberKey][0])
+	if err != nil {
+		return
+	}
+	pageSize := defaultPageSize
+	if size, ok := values[pageSizeKey]; ok {
+		pageSize, err = strconv.Atoi(size[0])
+		if err != nil {
+			return
+		}
+	}
+	paginatedQuery = fmt.Sprintf("LIMIT %d OFFSET(%d - 1) * %d", pageSize, pageNumber, pageSize)
+	return
+}
