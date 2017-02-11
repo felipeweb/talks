@@ -1,0 +1,90 @@
+Go 1.8 plugins e outras novidades
+Demonstração e novo recurso da 1.8
+16 Feb 2017
+
+Felipe Paes de Oliveira
+Senior developer at Nuveo
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+https://github.com/felipeweb
+@_felipeweb
+
+Cesar Gimenes
+Senior developer at Nuveo
+crg@crg.eti.br
+http://crg.eti.br
+http://github.com/crgimenes
+@crgimenes
+Material da palestra:
+https://github.com/crgimenes/talks/blob/master/Go1.8/
+
+* Ponto de vista
+
+O recuso de plugin é interessante mas da forma como esta não é util para todos, alguns projetos podem se beneficiar mas no momento não é possível descarregar um plugin nem fazer alterações sem que o programa host também seja reiniciado. 
+
+* Pontos negativos
+
+- Plugin não pode ser descarregado, falta uma função close.
+- Quando um plugin é carregado ele fica cacheado e se tentar recarregar novamente o mesmo plugin sem reiniciar o host o sistema quebra.
+- Só funciona no Linux Mac e outras plataformas ficaram para a versão 1.9.
+
+* Pontos positivos
+
+- Fácil de implementar.
+- Permite enviar código pré compilado para ser carregado sem requerer um deploy do sistema completo.
+- Agora podemos modularizar nossos binários e carregar as funções em "lazy mode".
+
+* Como implementar
+
+Cria um plugin é muito parecido com criar um programa normal não requer nenhuma estrutura diferenciada. Apenas compilar com o seguinte comando.
+
+
+go build -buildmode=plugin hello.go
+
+Isso vai gerar um arquivo plugin.so para gerar com um nome diferente use o parâmetro -o nome.so
+
+Exemplo de plugin:
+.code hello.go
+
+* Chamando funções do plugin
+
+Primeiro carregamos o arquivo .so
+
+.code main.go /etapa1/,/etapa2/
+
+* Chamando funções do plugin
+
+Em seguida carregamos os símbolos do arquivo (funções)
+
+.code main.go /etapa2/,/etapa3/
+
+* Chamando funções do plugin
+
+Por fim podemos chamar a função como faríamos normalmente.
+
+.code main.go /etapa3/,/}/
+
+.link https://github.com/crgimenes/Go-Hands-On/tree/master/plugin Mais exemplos de plugins
+
+* Outras coisas da 1.8 que queremos mencionar
+
+- Tradicional melhoria no compilador
+
+- HTTP1.1 lenta 0.5μs nas chamadas 
+
+- Agora o GOPATH tem valor default $HOME/go ou %USERPROFILE%/go
+
+- O servidor HTTP agora tem um método "Shutdown(context) err" para parar o serviço graciosamente :D
+
+- Você agora consegue atribuir uma struct diferente do tipo da variável desde que os campos das duas structs sejam iguais.
+
+
+* Referencias
+
+.link https://docs.google.com/document/d/1nr-TQHw_er6GOQRsF6T43GGhFDelrAP0NqSS_00RgZQ/mobilebasic# Proposta dos plugins
+.link https://github.com/golang/go/issues/18964 Lentidão do HTTP1.1 
+.link https://github.com/campoy/golang-plugins/ Load dinamico de plugin (mas sem o close a memoria continua alocada toda vez)
+
+
+
+
