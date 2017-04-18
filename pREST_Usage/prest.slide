@@ -50,7 +50,7 @@ https://www.felipeweb.net.br
 /DATABASE/SCHEMA/TABLE?FIELD=$eq.VALUE
 
 - Com campo JSONB
-/DATABASE/SCHEMA/TABLE?FIELD->>JSONFIELD:jsonb=$gt.VALUE
+/DATABASE/SCHEMA/TABLE?FIELD->>JSONFIELD:jsonb=$eq.VALUE
 
 * Outros operadores
 
