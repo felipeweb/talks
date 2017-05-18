@@ -1,0 +1,125 @@
+pREST
+A RESTful API from any PostgreSQL database
+18 Apr 2017
+Tags: PostgreSQL, API, REST
+
+Felipe Paes de Oliveira
+Go Developer at Nuveo
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+@_felipeweb
+
+* Como surgiu o pREST?
+
+- Nuveo v2
+- Remodelando para uma estrutura menos rigida
+- Nuveo v1 em Go e MongoDB
+- Nuveo v2 Go e PostgreSQL com suporte a JSONB
+- Reescrever todas as queries de todos os sistemas
+- postgREST (https://github.com/begriffs/postgrest, Haskell), dificil de manter em produção
+
+* Sobre o pREST
+
+- Primeiro commit 22 de Novembro de 2016 (by *@avelino*)
+- 7 releases (versão atual *v0.1.6*)
+- Suporte as operações de CRUD
+- Suporte a JOIN
+- Suporte a execução de scripts SQL
+- Autenticação via JWT
+- Sistema autorização
+- CORS
+- Configuração: Flag > Env > TOML file
+- Sistema de migrations
+- Pode ser usado como aplicação ou package
+
+* Padrão pREST
+
+- URLs: /DATABASE/SCHEMA/TABLE
+- HTTP GET = select
+- HTTP POST = insert
+- HTTP DELETE = delete
+- HTTP PUT = update
+- HTTP PATCH = update
+- Query string não começa com `_` = clausula where
+- Query string começa com `_` = query operations eg: JOIN ou paginação
+.code body.json
+
+* Filtros
+
+- Sem campos JSONB
+/DATABASE/SCHEMA/TABLE?FIELD=$eq.VALUE
+
+- Com campo JSONB
+/DATABASE/SCHEMA/TABLE?FIELD->>JSONFIELD:jsonb=$eq.VALUE
+
+* Outros operadores
+
+.image operators.png
+
+* Operadores
+
+- Na clausula where podemos omitir o operador `$eq`
+
+/DATABASE/SCHEMA/TABLE?FIELD=VALUE
+=
+/DATABASE/SCHEMA/TABLE?FIELD=$eq.VALUE
+
+* JOIN
+/DATABASE/SCHEMA/TABLE?_join=inner:users:friends.userid:$eq:users.id
+
+* Operadores
+
+.image operators.png
+
+* Usando o pREST como package
+
+.code module.go
+
+* Case Filmow
+
+* Case Filmow
+
+- Usa o pREST como package
+
+- Uma parte de Django pra Go
+
+* Vantagens
+
+* Performace: Django
+
+.image django.jpg
+
+* Performace: pREST
+
+.image prest.jpg
+
+* Desvantagens
+
+* pREST dentro da Nuveo
+
+* pREST dentro da Nuveo
+
+- Usando como app
+
+* Vantagens
+
+* Vantagens
+
+- Expõe uma app com o banco de dados
+- Agiliza o desenvovimento de operações de CRUD
+
+* Desvantagens
+
+* Desvantagens
+
+- O código não deixa claro que está acessando o banco de dados
+- Esconde muito a complexidade do código
+
+* Proximos passos
+
+- Melhorar buscas com JSONB
+- Melhorar mensagens de erro
+
+* Para saber mais
+
+.link http://postgres.rest Site do pREST
