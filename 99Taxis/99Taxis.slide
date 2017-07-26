@@ -1,0 +1,124 @@
+goroutines, tratando erros e liberando recursos
+Vamos ver o que fazer e o que não fazer quando você precisa criar um sistema altamente concorrente. 
+26 Jul 2017
+
+Cesar Gimenes
+Software Quality Engineer at Nuveo
+crg@crg.eti.br
+http://crg.eti.br
+http://github.com/crgimenes
+@crgimenes
+Material da palestra:
+https://github.com/crgimenes/talks/blob/master/99Taxis
+
+* Um conto de terror para programadores
+Transcrição em: 
+.link http://crg.eti.br/post/um-conto-de-terror-para-programadores/
+
+* Outro conto de terror
+
+.image memoryLeak.png
+A goroutine que retornava erro mas não fechava o arquivo
+
+
+* Tratando erros em goroutines
+
+Para tratamento de erros em goroutines você precisa de um "supervisor", uma thread que fica vigiando suas rotinas e recebendo informações delas inclusive os erros.
+
+.link https://github.com/crgimenes/atomic
+
+Envia erro via canal:
+.link https://github.com/crgimenes/atomic/blob/master/server/server.go#L72
+
+Recebe o erro:
+.link https://github.com/crgimenes/atomic/blob/master/server/server.go#L86
+
+* Enviar mais dados em um erro
+
+error é uma interface, então se você quer enviar mais dados em um erro basta implementar uma struct que satisfaça a interface error e pronto.
+
+Exemplo
+
+    type ConnError struct {
+        msg    string // descreve o erro
+        id     int64  // id do usuário ou qualquer outro dado
+    }
+
+    func (e *ConnError) Error() string { 
+        return "id:" + id + " " + e.msg 
+    }
+
+Mais exemplos interessantes
+.link https://blog.golang.org/error-handling-and-go
+
+* Erros comuns #1
+
+- Usar defer em um loop infinito
+
+    fot {
+        ...
+        f, err := os.Open("foo")
+        if err != nil {
+            log.Println(err) // Logou mas não saiu
+        }
+        defer fh.Close()
+        ...
+    }
+
+* Erros comuns #2
+
+- Goroutine que nunca retorna em um loop infinito
+
+    for {
+        go foo()
+    }
+
+Se por algum motivo foo() travar e nunca retornar o sistema quebra, goroutines precisam de um supervisor de preferencia com timeout.
+
+    select {
+    case casoFoo := <-cFoo:
+        ...
+    case casoBar := <-cBar:
+        ...
+    case <-time.After(time.Second):
+        ... toma alguma providencia, idealmente 
+        usa context para finalizar a goroutine
+    }
+
+* Erros comuns #3
+
+Esperar por canais dentro de uma goroutine também pode ser perigoso... mais uma vez select com timeout pode ser uma saída se você não quer implementar um supervisor.
+
+    {
+        foo <- bar
+    }
+
+Pode ser resolvido com:
+
+    select {
+    case foo<-bar:
+        ...
+    case <-time.After(time.Second)
+        ...
+    }
+
+* Ou você pode fazer com que a goroutine nunca bloqueie
+
+    select {
+    case foo<-bar:
+        ...
+    default:
+        ...
+    }
+
+* Erros comuns #4
+
+Variaveis globais e singletons
+
+Um erro bastante comum é ter variáveis globais ou singletons sendo acessadas por múltiplas goroutines, isso pode causar vários problemas que vão desde data race até simplesmente criar um gargalo porque todas as goroutines estão tentando usar a mesma conexão para falar com o banco por exemplo...
+
+Eu falo mais sobre o problema de abrir apenas uma conexão com o banco aqui:
+
+Carregando o sped fiscal 95% mais rápido.
+.link http://crg.eti.br/post/go-carregando-arquivos-sped-fiscal-super-rapido/ 
+
