@@ -1,0 +1,12 @@
+// Not good on its own
+const contextDir = "./"
+
+// Better
+var contextDir = "./"
+
+// Best
+const defaultContextDir = "./"
+
+type BuildOptions struct {
+	ContextDir string
+}

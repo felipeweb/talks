@@ -1,0 +1,3 @@
+type Storing struct {
+	session *session.Session
+}

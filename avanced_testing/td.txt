@@ -1,0 +1,5 @@
+func TestAdd(t *testing.T) {
+    // omited code
+	data := filepath.Join("testdata", tc.Name)
+    // do something
+}

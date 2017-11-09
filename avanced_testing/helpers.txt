@@ -1,0 +1,14 @@
+func testTempFile(t *testing.T) (string, func()) {
+    t.Helper() // go 1.9 or higher
+    tf, err := ioutil.TempFile(“”, “test”)
+    if err != nil {
+        t.Fatalf(“err: %s”, err)
+    }
+    tf.Close()
+    return tf.Name(), func() { os.Remove(tf.Name()) }
+}
+
+func TestThing(t *testing.T) {
+    tf, tfclose := testTempFile(t)
+    defer tfclose()
+}

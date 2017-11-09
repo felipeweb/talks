@@ -1,0 +1,16 @@
+func TestAdd(t *testing.T) {
+	testCases := []struct {
+		a        int
+		b        int
+		expected int
+	}{
+		{1, 1, 2},
+		{1, -1, 0},
+	}
+	for _, tc := range testCases {
+		r := Add(tc.a, tc.b)
+		if r != tc.expected {
+			t.Errorf("expected %v, but got %v", tc.expected, r)
+		}
+	}
+}
