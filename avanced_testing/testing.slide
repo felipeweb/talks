@@ -1,0 +1,165 @@
+Testes Avançados em Go
+11 Nov 2017
+
+Felipe Oliveira
+Senior Software Engineer, Nuveo
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+@_felipeweb
+
+* Sobre mim
+
+.image https://avatars1.githubusercontent.com/u/4874009
+.caption Felipe Oliveira [[https://www.felipeweb.net.br][@_felipeweb]]
+- Mais de 3 anos de expriência com Go
+
+* Nuveo
+
+.image https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAe8AAAAJDdhZTIzMjJkLTY1MWItNDg4OC04YzBiLTk3NTVkODA2Yzc3OQ.png
+.caption Logo [[https://www.nuveo.ai][Nuveo]]
+- Mais ou menos 90% da base de Código em Go
+- Clientes como Bradesco, Cyrela e outros grandes
+
+* Projetos
+
+- Nuveo Software
+- pREST (http://postgres.rest)
+- gofn (https://github.com/nuveo/gofn)
+
+* As duas partes de testar
+
+- Metodologia de testes
+- Escrever código testável
+
+* Metodologia
+
+- Como testar cenários especificos
+- Como escrever testes eficientes
+- Um teste é muito mais que um `assert(func() == expected)`
+
+* Código testável
+
+- Como escrever código facilmente bem testado
+- Tão importante quanto escrever bons testes é escrever um código que possa ser testado
+- Refatorar código existente para que ele fique testável doloroso, mas necessário
+- TDD
+
+* Table Driven Tests
+
+* Table Driven Tests
+
+.code tdt.txt
+
+* Table Driven Tests
+
+- Muito facil adicionar um novo caso de teste
+- Torna facil testar cenarios complexos
+- Torna facil reproduzir um bug para o cenario testado
+- Use esse pattern mesmo se o cenario só tiver um caso de teste
+
+* Subtests
+
+* Subtests
+
+.code st.txt
+
+* Diretório testdata
+
+* Diretório testdata
+
+.code td.txt
+
+- O "go test" configura o diretório do teste como diretório de trabalho atual
+- Use o diretório para gravar os dados de teste
+- Muito util para arquivos de configuração
+
+* Dados de teste com flags
+
+* Dados de teste com flags
+
+.code gff.txt
+
+* Dados de teste com flags
+
+.code cmd.txt
+
+- Facil de testar output complexos
+- Facil de comparar diferenças entre arquivos
+- Auxilia a escrever a função `String()`
+
+* Estado global
+
+* Estado global
+
+.code gs.txt
+
+- Evite sempre que possivel
+- Em ultimo caso quando usar estado global use var permitindo os testes modificar o estado
+
+* Helpers
+
+* Helpers
+
+.code helpers.txt
+
+- Nunca retorne erro passe `*testing.T` como parametro e falhe o teste
+- Use helpers para deixar o teste mais claro
+
+* Pacote e funções
+
+* Pacote e funções
+
+- Quebre a compibilidade da sua API, mas seja criterioso com isso
+- Não exagere, faça isso onde faz sentido
+- Fazer isso corretamente ajudará a testar e deixa o código mais organizado
+- Fazer isso em excesso deixa o testes complicados
+- Com pratica você encontrará o ponto de parada
+- Teste somente sua API publica
+
+* Configuração
+
+* Configuração
+
+.code cfg.txt
+
+- Use variáveis de ambiente
+- Coloque fields não exportado nas structs para facilitar a configuração do teste
+
+* Subprocesso
+
+* Subprocesso
+
+.code sub.txt
+
+* Subprocesso
+
+.code subrun.txt
+
+* Subprocesso
+
+- Executa um subprocesso com implementação mock do comando
+- A stdlib faz assim no pacote `os/exec`
+
+* Interfaces
+
+* Interfaces
+
+- Interfaces são pontos de mock
+- Use com cautela, o uso em exceso de interfaces difculta a legibilidade do código
+
+* Testes como API publica
+
+* Testes como API publica
+
+.code public.txt
+
+- Exponha seus mocks como API publica
+- Evite que outos pacotes reinventem a roda pra testar código que dependam de seus componentes
+- Como toda API publica, também precisa de testes
+
+* TDD
+
+* TDD
+
+- Ajuda ao programador pensar na API publica de forma que ela fique testavel
+- Precisa de pratica pra conseguir fazer de forma natural

@@ -1,0 +1,18 @@
+var update = flag.Bool(“update”, false, “update golden files”)
+
+func TestSomething(t *testing.T) {
+    // omited code
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T){
+			actual := doSomething(tc)
+            golden := filepath.Join(“testdata”, fmt.Sprintf("%s.%s",tc.Name, tc.FileType))
+            if *update {
+                ioutil.WriteFile(golden, actual, 0644)
+            }
+            expected, _ := ioutil.ReadFile(golden)
+            if !bytes.Equal(actual, expected) {
+                // FAIL!
+            }
+		})
+	}
+}

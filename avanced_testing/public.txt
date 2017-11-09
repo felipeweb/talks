@@ -1,0 +1,11 @@
+// FakeServer SSH
+type FakeServer struct {
+	t          *testing.T
+	conf       *ssh.ServerConfig
+	listener   net.Listener
+	Cmd        string
+	Reply      string
+	ConnDelay  time.Duration
+	ExecDelay  time.Duration
+	ExitStatus int
+}
