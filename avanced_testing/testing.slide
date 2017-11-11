@@ -41,7 +41,7 @@ https://www.felipeweb.net.br
 
 - Como escrever código facilmente bem testado
 - Tão importante quanto escrever bons testes é escrever um código que possa ser testado
-- Refatorar código existente para que ele fique testável doloroso, mas necessário
+- Refatorar código existente para que ele fique testável é doloroso, mas necessário
 - TDD
 
 * Table Driven Tests
