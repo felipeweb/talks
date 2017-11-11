@@ -33,13 +33,13 @@ https://www.felipeweb.net.br
 
 * Metodologia
 
-- Como testar cenários especificos
-- Como escrever testes eficientes
+- Como testar cenários especificos?
+- Como escrever testes eficientes?
 - Um teste é muito mais que um `assert(func() == expected)`
 
 * Código testável
 
-- Como escrever código facilmente bem testado
+- Como escrever um código para ser fácilmente bem testado?
 - Tão importante quanto escrever bons testes é escrever um código que possa ser testado
 - Refatorar código existente para que ele fique testável é doloroso, mas necessário
 - TDD
@@ -52,10 +52,10 @@ https://www.felipeweb.net.br
 
 * Table Driven Tests
 
-- Muito facil adicionar um novo caso de teste
-- Torna facil testar cenarios complexos
-- Torna facil reproduzir um bug para o cenario testado
-- Use esse pattern mesmo se o cenario só tiver um caso de teste
+- Muito fácil adicionar um novo caso de teste
+- Torna fácil testar cenários complexos
+- Torna fácil reproduzir um bug para o cenário testado
+- Use esse pattern mesmo se o cenário só tiver um caso de teste
 
 * Subtests
 
@@ -71,7 +71,7 @@ https://www.felipeweb.net.br
 
 - O "go test" configura o diretório do teste como diretório de trabalho atual
 - Use o diretório para gravar os dados de teste
-- Muito util para arquivos de configuração
+- Muito útil para arquivos de configuração
 
 * Dados de teste com flags
 
@@ -83,8 +83,8 @@ https://www.felipeweb.net.br
 
 .code cmd.txt
 
-- Facil de testar output complexos
-- Facil de comparar diferenças entre arquivos
+- Fácil de testar output complexos
+- Fácil de comparar diferenças entre arquivos
 - Auxilia a escrever a função `String()`
 
 * Estado global
@@ -94,7 +94,7 @@ https://www.felipeweb.net.br
 .code gs.txt
 
 - Evite sempre que possivel
-- Em ultimo caso quando usar estado global use var permitindo os testes modificar o estado
+- Em último caso quando usar estado global use var permitindo os testes modificar o estado
 
 * Helpers
 
@@ -113,8 +113,8 @@ https://www.felipeweb.net.br
 - Não exagere, faça isso onde faz sentido
 - Fazer isso corretamente ajudará a testar e deixa o código mais organizado
 - Fazer isso em excesso deixa o testes complicados
-- Com pratica você encontrará o ponto de parada
-- Teste somente sua API publica
+- Com prática você encontrará o ponto de parada
+- Teste somente sua API pública
 
 * Configuração
 
@@ -147,19 +147,19 @@ https://www.felipeweb.net.br
 - Interfaces são pontos de mock
 - Use com cautela, o uso em exceso de interfaces difculta a legibilidade do código
 
-* Testes como API publica
+* Testes como API pública
 
-* Testes como API publica
+* Testes como API pública
 
 .code public.txt
 
-- Exponha seus mocks como API publica
+- Exponha seus mocks como API pública
 - Evite que outos pacotes reinventem a roda pra testar código que dependam de seus componentes
-- Como toda API publica, também precisa de testes
+- Como toda API pública, também precisa de testes
 
 * TDD
 
 * TDD
 
-- Ajuda ao programador pensar na API publica de forma que ela fique testavel
-- Precisa de pratica pra conseguir fazer de forma natural
+- Ajuda ao programador pensar na API pública de forma que ela fique testavel
+- Precisa de prática para conseguir fazer de forma natural  
