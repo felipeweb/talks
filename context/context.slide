@@ -1,0 +1,94 @@
+Context
+Como usar?
+17 Nov 2017
+
+Felipe Oliveira
+Senior Software Engineer, Nuveo
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+@_felipeweb
+
+* Sobre mim
+
+.image https://avatars1.githubusercontent.com/u/4874009
+.caption Felipe Oliveira [[https://www.felipeweb.net.br][@_felipeweb]]
+- Mais de 3 anos de expriência com Go
+
+* Nuveo
+
+.image https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAe8AAAAJDdhZTIzMjJkLTY1MWItNDg4OC04YzBiLTk3NTVkODA2Yzc3OQ.png
+.caption Logo [[https://www.nuveo.ai][Nuveo]]
+- Mais ou menos 90% da base de Código em Go
+- Clientes como Bradesco, Cyrela, Vivo e outros grandes
+
+* Projetos
+
+- Nuveo Software
+- pREST (http://postgres.rest)
+- gofn (https://github.com/nuveo/gofn)
+
+* Para que serve o pacote context?
+
+- Deadline
+- Timeout
+- Cancelamento de sinais
+- Escopo de requisição
+
+* Para que serve o pacote context?
+
+.code context.go /^type Context/,/^}/
+
+* Context Background
+
+.code context.go /^// Background/,/Context {}/
+
+- Raiz da arvore de contextos
+- Não tem `CancelFunc`
+- Não tem deadline
+
+* Context WithCancel
+
+.code context.go /^// WithCancel/,/func\(\)/
+ 
+- Contexto pai
+- Execução da `CancelFunc`
+- Não tem deadline
+
+* Context WithDeadline
+
+.code context.go /^// WithDeadline/,/CancelFunc\) {}/
+
+- Contexto pai
+- Execução da `CancelFunc`
+- Utrapassar o tempo limite
+
+* Context WithTimeout
+
+.code context.go /^// WithTimeout/,/}/
+
+- WithTimeout == WithDeadline(now + duration)
+
+* Context WithValue
+
+.code context.go /^// WithValue/,/Context {}/
+
+- Contexto pai
+- Não tem `CancelFunc`
+- Não tem deadline
+
+* Exemplo de uso context.WithValue
+
+.code context.go /^func FromContext/,/}/
+
+* Exemplo de uso outros contextos
+
+.code context.go /^func Run/,/} // fim/
+
+* Mais exemplos
+
+.code context.go /^func queueLoop/,/} // fim/
+
+* Armadilhas no uso context
+
+- Aumento do uso de memória da aplicação
+- Se o contexto pai for contexto do tipo deadline, mantem o tempo do contexto pai
