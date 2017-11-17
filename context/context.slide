@@ -14,18 +14,19 @@ https://www.felipeweb.net.br
 .caption Felipe Oliveira [[https://www.felipeweb.net.br][@_felipeweb]]
 - Mais de 3 anos de expriência com Go
 
+* Projetos
+
+- Nuveo Software
+- pREST (http://postgres.rest)
+- gofn (https://github.com/nuveo/gofn)
+- mercurius (https://github.com/novatrixtech/mercurius)
+
 * Nuveo
 
 .image https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAe8AAAAJDdhZTIzMjJkLTY1MWItNDg4OC04YzBiLTk3NTVkODA2Yzc3OQ.png
 .caption Logo [[https://www.nuveo.ai][Nuveo]]
 - Mais ou menos 90% da base de Código em Go
 - Clientes como Bradesco, Cyrela, Vivo e outros grandes
-
-* Projetos
-
-- Nuveo Software
-- pREST (http://postgres.rest)
-- gofn (https://github.com/nuveo/gofn)
 
 * Para que serve o pacote context?
 
