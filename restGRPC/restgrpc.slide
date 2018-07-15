@@ -1,0 +1,28 @@
+Criando API Rest com GRPC Gateway
+21 Jul 2018
+
+Felipe Oliveira
+Senior Software Engineer, Nuveo
+felipeweb.programador@gmail.com
+https://www.felipeweb.net.br
+@_felipeweb
+
+* Quem sou eu?
+
+- Mais de 4 anos de experiência com Go
+- Open Source S2 (pREST, Gofn, Moby, Tsuru)
+
+* O que é GRPC?
+
+- Framework RPC
+- Usa Protobuf como linguagem de definição
+- Trafega binário pela rede
+
+* Demo
+
+.link https://github.com/felipeweb/grpc-tad https://github.com/felipeweb/grpc-tad
+
+* Quando usar?
+
+- Escrever serviços com mais performaticos
+- Expor para o mundo transformando o serviço para HTTP. Usando o GRPC Gateway
